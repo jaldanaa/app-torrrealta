@@ -1,0 +1,276 @@
+<style-links></style-links>
+<sidebar content="'alumnos'"></sidebar>
+<div id="right-panel" class="right-panel">
+  <header-component></header-component>
+  <div class="content pb-0">
+    <div class="row">
+      <div class="card w-100">
+        <div class="card-header" ng-if="!vm.inscripcion">
+          <strong class="card-title">Datos del padre o representante </strong> 
+        </div>
+        <div class="card-body">
+          <div id="pay-invoice">
+            <div class="card-body">
+              <div class="card-title">
+                <h3 class="text-center" ng-if="!vm.inscripcion">Datos del padre, madre o representante legal</h3>
+              </div>
+              <hr />
+              <form name="vm.inscripcionForm" novalidate>
+                <div class="form-group">
+                  <label for="cc-payment" class="control-label mb-1"
+                    >Nombres</label
+                  >
+                  <input
+                    id="nombres"
+                    name="nombres"
+                    type="text"
+                    class="form-control"
+                    required
+                    ng-model="vm.representanteModel.nombres"
+                  />
+                  <small class="form-text text-danger" >*Ingrese los nombres</small>
+                </div>    
+                <div class="form-group">
+                    <label for="cc-payment" class="control-label mb-1"
+                      >Apellidos</label
+                    >
+                    <input
+                      id="apellidos"
+                      name="apellidos"
+                      type="text"
+                      class="form-control"
+                      required
+                      ng-model="vm.representanteModel.apellidos"
+                    />
+                    <small class="form-text text-danger" >*Ingrese los apellidos</small>
+                  </div>      
+                  <div class="form-group">
+                    <label for="cc-payment" class="control-label mb-1"
+                      >DPI</label
+                    >
+                    <input
+                      id="dpi"
+                      name="dpi"
+                      type="text"
+                      class="form-control"
+                      required
+                      ng-model="vm.representanteModel.dpi"
+                    />
+                    <small class="form-text text-danger" >*Ingrese DPI</small>
+                  </div>
+                  <div class="form-group">
+                    <label for="cc-payment" class="control-label mb-1"
+                      >Direccion</label
+                    >
+                    <input
+                      id="direccion"
+                      name="direccion"
+                      type="text"
+                      class="form-control"
+                      required
+                      ng-model="vm.representanteModel.direccion"
+                    />
+                    <small class="form-text text-danger" >*Ingrese una dirección</small>
+                  </div>  
+                  <div class="form-group">
+                    <label for="cc-payment" class="control-label mb-1"
+                      >Telefono</label
+                    >
+                    <input
+                      id="telefono"
+                      name="telefono"
+                      type="text"
+                      class="form-control"
+                      required
+                      ng-model="vm.representanteModel.telefono"
+                    />
+                    <small class="form-text text-danger" >*Ingrese un numero de telefono</small>
+                  </div>    
+                  <div class="form-group">
+                    <label for="cc-payment" class="control-label mb-1"
+                      >Genero</label
+                    >
+                    <input
+                      id="sexo"
+                      name="sexo"
+                      type="text"
+                      class="form-control"
+                      required
+                      ng-model="vm.representanteModel.sexo"
+                    />
+                    <small class="form-text text-danger" >*Ingrese el genero</small>
+                  </div>  
+                  <div class="form-group">
+                    <label for="cc-payment" class="control-label mb-1"
+                      >Estado civil</label
+                    >
+                    <input
+                      id="estado_civil"
+                      name="estado_civil"
+                      type="text"
+                      class="form-control"
+                      required
+                      ng-model="vm.representanteModel.estado_civil"
+                    />
+                    <small class="form-text text-danger" >*Ingrese el estado civil</small>
+                  </div>      
+                  <div class="form-group">
+                    <label for="cc-payment" class="control-label mb-1"
+                      >Parentesco</label
+                    >
+                    <input
+                      id="parentesco_alumno"
+                      name="parentesco_alumno"
+                      type="text"
+                      class="form-control"
+                      required
+                      ng-model="vm.representanteModel.parentesco_alumno"
+                    />
+                    <small class="form-text text-danger" >*Ingrese el parentesco del representante con el alumno ha inscribir</small>
+                  </div>  
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card w-100">
+        <div class="card-header" >
+          <strong class="card-title">Datos del Alumno </strong> 
+        </div>
+        <div class="card-body">
+          <div id="pay-invoice">
+            <div class="card-body">
+              <div class="card-title">
+                <h3 class="text-center" >Datos del alumno</h3>
+              </div>
+              <hr />
+              <form name="vm.inscripcionForm" novalidate>
+                <div class="form-group">
+                  <label for="cc-payment" class="control-label mb-1"
+                    >Nombres</label
+                  >
+                  <input
+                    id="nombres"
+                    name="nombres"
+                    type="text"
+                    class="form-control"
+                    required
+                    ng-model="vm.alumnoModel.nombres"
+                  />
+                  <small class="form-text text-danger" >*Ingrese los nombres</small>
+                </div>    
+                <div class="form-group">
+                    <label for="cc-payment" class="control-label mb-1"
+                      >Apellidos</label
+                    >
+                    <input
+                      id="apellidos"
+                      name="apellidos"
+                      type="text"
+                      class="form-control"
+                      required
+                      ng-model="vm.alumnoModel.apellidos"
+                    />
+                    <small class="form-text text-danger" >*Ingrese los apellidos</small>
+                  </div>      
+                  <div class="form-group">
+                    <label for="cc-payment" class="control-label mb-1"
+                      >Fecha nacimiento</label
+                    >
+                    <input
+                      id="fecha_nacimiento"
+                      name="fecha_nacimiento"
+                      type="date"
+                      class="form-control"
+                      required
+                      ng-model="vm.alumnoModel.fecha_nacimiento"
+                    />
+                    <small class="form-text text-danger" >*Ingrese la fecha_nacimiento</small>
+                  </div>
+                  <div class="form-group">
+                    <label for="cc-payment" class="control-label mb-1"
+                      >telefono</label
+                    >
+                    <input
+                      id="telefono"
+                      name="telefono"
+                      type="text"
+                      class="form-control"
+                      required
+                      ng-model="vm.alumnoModel.telefono"
+                    />
+                    <small class="form-text text-danger" >*Ingrese un numero de telefono</small>
+                  </div>  
+                  <div class="form-group">
+                    <label for="cc-payment" class="control-label mb-1"
+                      >Direccion</label
+                    >
+                    <input
+                      id="direccion"
+                      name="direccion"
+                      type="text"
+                      class="form-control"
+                      required
+                      ng-model="vm.alumnoModel.direccion"
+                    />
+                    <small class="form-text text-danger" >*Ingrese una direccion</small>
+                  </div>    
+                  <div class="form-group">
+                    <label for="cc-payment" class="control-label mb-1"
+                      >nacionalidad</label
+                    >
+                    <input
+                      id="nacionalidad"
+                      name="nacionalidad"
+                      type="text"
+                      class="form-control"
+                      required
+                      ng-model="vm.alumnoModel.nacionalidad"
+                    />
+                    <small class="form-text text-danger" >*Ingrese la nacionalidad</small>
+                  </div>  
+                  <div class="form-group">
+                    <label for="cc-payment" class="control-label mb-1"
+                      >Genero</label
+                    >
+                    <input
+                      id="sexo"
+                      name="sexo"
+                      type="text"
+                      class="form-control"
+                      required
+                      ng-model="vm.alumnoModel.sexo"
+                    />
+                    <small class="form-text text-danger" >*Ingrese el genero</small>
+                  </div>      
+                  <div class="form-group">
+                    <label for="cc-payment" class="control-label mb-1"
+                      >Numero partida de nacimiento</label
+                    >
+                    <input
+                      id="partida_nacimiento"
+                      name="partida_nacimiento"
+                      type="text"
+                      class="form-control"
+                      required
+                      ng-model="vm.alumnoModel.partida_nacimiento"
+                    />
+                    <small class="form-text text-danger" >*Ingrese el Numero partida de nacimiento</small>
+                  </div>  
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <button
+            type="submit"
+            class="btn btn-primary btn-sm"
+            ng-click="vm.guardarInscripcion()"
+          >
+            <i class="fa fa-dot-circle-o"></i> Guardar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

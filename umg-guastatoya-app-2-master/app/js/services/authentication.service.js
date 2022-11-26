@@ -50,7 +50,7 @@
         function getToken(data) {
             return AuthenticationRepository.getToken(data).then(function (response) {
                 var user = parseJwt(response.data.access);
-                if (user.profile.tipo != 1 && user.profile.tipo != 4) { // Se verifica el tipo de usuario es administrador o publicador
+                if (user.profile.tipo != 1 && user.profile.tipo != 4 && user.profile.tipo != 3) { // Se verifica el tipo de usuario es administrador o publicador
                     response.status = 403; // Si no es ninguna de las anteriores, se cambia el response a 403 (forbidden)
                 }else{
                     setSessionData(response.data); // Si es alguna de las permitidas, se setean las variables de sesion (tokens)
@@ -93,7 +93,7 @@
                         return true;
                     return false;
                 case 'noticia':
-                    if (userType === 1 || userType === 4) 
+                    if (userType === 1 || userType === 4 ) 
                         return true;
                     return false;
                 default:

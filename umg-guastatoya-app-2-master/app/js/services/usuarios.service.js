@@ -17,6 +17,8 @@
             getUsuario: getUsuario,
             getUserData: getUserData,
             editarPerfil: editarPerfil,
+            crearEstudiante: crearEstudiante,
+            editarPerfilEstudiante: editarPerfilEstudiante,
             usuarios: []
         };
 
@@ -82,6 +84,18 @@
             }).catch(handleError);
         }
 
+        function editarPerfilEstudiante(id, data) {
+            return UsuariosRepository.editarPerfilEstudiante(id, data).then(function(response) {
+                return response;
+            }).catch(handleError);
+        }
+
+        function crearEstudiante(data) {
+            return UsuariosRepository.crearEstudiante(data).then(function(response) {
+                return response;
+            }).catch(handleError);
+        }
+
         function eliminarUsuario(id) {
             return UsuariosRepository.eliminarUsuario(id).then(function(response) {
                 removerUsuario(id);
@@ -99,7 +113,7 @@
         // Funcion que se usa para manejar los errores de los endpoints de usuarios, si devuelve 403 (forbidden) significa que no tiene acceso al endpoint y se redirige al inicio
         function handleError(error) {
             if (error.status === 403) {
-                $state.go('noticias', {});
+                $state.go('evaluaciones', {});
             }
             return error;
         }

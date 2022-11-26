@@ -78,6 +78,34 @@
         </li>
         <li class="menu-title">Usuarios</li>
       </ul>
+      <ul class="nav navbar-nav" ng-if="vm.content === 'grados'">        
+        <li ng-if="vm.authenticationService.validSession()">
+          <a ui-sref="grado({})" ui-sref-active="cls_active"
+            ><i class="menu-icon fa fa-plus"></i>
+            Agregar grado
+          </a>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav" ng-if="vm.content === 'alumnos'">        
+        <li ng-if="vm.authenticationService.validSession()">
+          <a ui-sref="inscripcion({})" ui-sref-active="cls_active"
+            ><i class="menu-icon fa fa-plus"></i>
+            Nueva Inscripcion
+          </a>
+        </li>      
+        <li ng-if="vm.authenticationService.validSession()">
+          <a ui-sref="asignacion({})" ui-sref-active="cls_active"
+            ><i class="menu-icon fa fa-plus"></i>
+            Asignacion
+          </a>
+        </li>       
+        <li ng-if="vm.authenticationService.validSession()">
+          <a ui-sref="notas({})" ui-sref-active="cls_active"
+            ><i class="menu-icon fa fa-plus"></i>
+            Notas
+          </a>
+        </li>
+      </ul>
     </div>
   </nav>
 </aside>

@@ -1,0 +1,98 @@
+<style-links></style-links>
+<div
+  ng-if="vm.authenticationService.currentUser && vm.authenticationService.currentUser.profile.tipo == 3"
+>
+  <header-component></header-component>
+  <div class="center">
+    <section id="">
+      <h1 class="subheader text-dark">Mis evaluaciones resueltas</h1>
+
+      <div
+        class="post-container"
+        ng-repeat="evaluacionResuelta in vm.evaluacionesResueltas track by $index"
+      >
+        <a class="text-dark">
+          <h1>{{evaluacionResuelta.evaluacion.titulo}}</h1>
+        </a>
+        <div class="post-info">
+          <span
+            ><i class="fa fa-book"></i>
+            <span class="username">{{evaluacionResuelta.evaluacion.curso.nombre}}</span>
+            <i class="fa fa-user"></i> {{evaluacionResuelta.evaluacion.catedratico.first_name}}
+            {{evaluacionResuelta.evaluacion.catedratico.last_name}}
+          </span>
+        </div>
+        <br />
+        <div class="post-content">
+          <div class="text-link-container">
+            <div class="text-container">
+              <p>Nota <strong>{{ evaluacionResuelta.ponderacion }}</strong></p>
+            </div>
+            <a
+              class="pointer-link"
+              ng-click="vm.verEvaluacionResuelta(evaluacionResuelta.id)"
+            >
+              Ver <i class="fa fa-angle-double-right"></i>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<div
+  ng-if="vm.authenticationService.currentUser && vm.authenticationService.currentUser.profile.tipo != 3"
+>
+  <sidebar content="'evaluaciones'"></sidebar>
+  <div id="right-panel" class="right-panel">
+    <header-component></header-component>
+    <div class="content pb-0">
+      <div class="row">
+        <div class="card w-100">
+          <div class="card-header">
+            <strong class="card-title">Evaluaciones resueltas</strong>
+          </div>
+          <div class="card-body">
+            <table class="table">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col">ID</th>
+                  <th scope="col">Titulo</th>
+                  <th scope="col">Curso</th>
+                  <th scope="col">Estudiante</th>
+                  <th scope="col">Ponderacion</th>
+                  <th scope="col">Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr
+                  ng-repeat="evaluacionResuelta in vm.evaluacionesResueltas track by $index"
+                >
+                  <th scope="row">{{evaluacionResuelta.id}}</th>
+                  <td>{{evaluacionResuelta.evaluacion.titulo}}</td>
+                  <td>{{evaluacionResuelta.evaluacion.curso.nombre}}</td>
+                  <td>
+                    {{evaluacionResuelta.estudiante.first_name}}
+                    {{evaluacionResuelta.estudiante.last_name}}
+                  </td>
+                  <td>{{evaluacionResuelta.ponderacion}}</td>
+                  <td>
+                    <button
+                      type="button"
+                      class="btn btn-lg btn-info btn-sm"
+                      ng-click="vm.verEvaluacionResuelta(evaluacionResuelta.id)"
+                    >
+                      <i class="fa fa-eye fa-lg"></i>&nbsp;
+                      <span id="payment-button-amount">Ver</span>
+                    </button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

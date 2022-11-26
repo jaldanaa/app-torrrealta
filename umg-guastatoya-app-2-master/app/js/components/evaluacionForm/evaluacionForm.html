@@ -1,0 +1,156 @@
+<style-links></style-links>
+<sidebar content="'evaluaciones'"></sidebar>
+<div id="right-panel" class="right-panel">
+  <header-component></header-component>
+  <div class="content pb-0">
+    <div class="row">
+      <div class="card w-100">
+        <div class="card-header" ng-if="!vm.evaluacion">
+          <strong class="card-title">Crear </strong> Evaluacion
+        </div>
+        <div class="card-header" ng-if="vm.evaluacion">
+          <strong class="card-title">Editar </strong> Evaluacion
+        </div>
+        <div class="card-body">
+          <div id="pay-invoice">
+            <div class="card-body">
+              <div class="card-title">
+                <h3 class="text-center" ng-if="!vm.evaluacion">Ingrese los datos de la evaluacion</h3>
+                <h3 class="text-center" ng-if="vm.evaluacion">{{vm.evaluacion.titulo}} | {{vm.evaluacion.curso.nombre}}</h3>
+              </div>
+              <hr />
+              <form name="vm.evaluacionForm" novalidate>
+                <div class="form-group">
+                  <label for="cc-payment" class="control-label mb-1"
+                    >Titulo</label
+                  >
+                  <input
+                    id="titulo"
+                    name="titulo"
+                    type="text"
+                    class="form-control"
+                    required
+                    ng-model="vm.evaluacionModel.titulo"
+                  />
+                  <small class="form-text text-danger" ng-if="vm.evaluacionForm.titulo.$invalid && vm.evaluacionForm.$submitted">*Ingrese el titulo</small>
+                </div>
+                <div class="form-group">
+                  <label for="cc-payment" class="control-label mb-1"
+                    >Curso</label
+                  >
+                  <select
+                    id="curso"
+                    name="curso"
+                    type="text"
+                    class="form-control"
+                    required
+                    ng-model="vm.evaluacionModel.curso"
+                  >
+                    <option
+                      value="{{c.id}}"
+                      ng-repeat="c in vm.cursos track by $index"
+                      ng-selected="{{c.id == vm.evaluacionModel.curso}}"
+                      >{{c.nombre}}</option
+                    >
+                  </select>
+                  <small class="form-text text-danger" ng-if="vm.evaluacionForm.curso.$invalid && vm.evaluacionForm.$submitted">*Ingrese el curso</small>
+                </div>
+                <div>
+                  <div class="card-title">
+                    <h3 class="text-center">
+                      Preguntas
+                    </h3>
+                  </div>
+                  <hr />
+                  <div
+                    ng-repeat="pregunta in vm.evaluacionModel.preguntas"
+                    ng-init="preguntaIndex = $index"
+                  >
+                    <hr/>
+                    <div class="form-group">
+                      <label for="pregunta{{preguntaIndex}}" class="control-label mb-1"
+                        >Pregunta {{preguntaIndex + 1}}</label
+                      >
+                      <input
+                        id="pregunta{{preguntaIndex}}"
+                        name="pregunta{{preguntaIndex}}"
+                        type="text"
+                        class="form-control"
+                        ng-model="vm.evaluacionModel.preguntas[preguntaIndex].titulo"
+                        required
+                      />
+                      <small class="form-text text-danger" ng-if="vm.evaluacionForm['pregunta' + preguntaIndex].$invalid && vm.evaluacionForm.$submitted">*Ingrese una pregunta valida</small>
+                    </div>
+                    <div class="w-75 justify-content-center ml-5">
+                      <div
+                        class="form-group"
+                        ng-repeat="respuesta in vm.evaluacionModel.preguntas[preguntaIndex].respuestas"
+                        ng-init="respuestaIndex = $index"
+                      >
+                        <label for="respuesta{{preguntaIndex}}{{respuestaIndex}}" class="control-label mb-1"
+                          >Respuesta {{respuestaIndex + 1}}</label
+                        >
+                        <input
+                          id="respuesta{{preguntaIndex}}{{respuestaIndex}}"
+                          name="respuesta{{preguntaIndex}}{{respuestaIndex}}"
+                          type="text"
+                          class="form-control"
+                          ng-model="vm.evaluacionModel.preguntas[preguntaIndex].respuestas[respuestaIndex].titulo"
+                          required
+                        />
+                        <small class="form-text text-danger mb-1" ng-if="vm.evaluacionForm['respuesta' + preguntaIndex + '' + respuestaIndex ].$invalid && vm.evaluacionForm.$submitted">*Ingrese una respuesta valida</small>
+                        <label
+                          class="switch switch-text switch-primary switch-pill"
+                          ><input
+                            type="checkbox"
+                            class="switch-input"
+                            ng-model="vm.evaluacionModel.preguntas[preguntaIndex].respuestas[respuestaIndex].correcto" />
+                          <span data-on="On" data-off="Off" class="switch-label"
+                            >Respuesta correcta</span
+                          >
+                          <span class="switch-handle"></span
+                        ></label>
+                      </div>
+                      <button
+                        id="payment-button"
+                        type="button"
+                        class="btn btn-lg btn-success btn-sm"
+                        ng-click="vm.agregarRespuesta(preguntaIndex)"
+                        ng-if="!vm.evaluacion"
+                      >
+                        <i class="fa fa-plus fa-lg"></i>&nbsp;
+                        <span id="payment-button-amount"
+                          >Agregar respuesta</span
+                        >
+                      </button>
+                    </div>
+                  </div>
+                  <hr />
+                  <button
+                    id="payment-button"
+                    type="button"
+                    class="btn btn-lg btn-info btn-block"
+                    ng-click="vm.agregarPregunta()"
+                    ng-if="!vm.evaluacion"
+                  >
+                    <i class="fa fa-plus fa-lg"></i>&nbsp;
+                    <span id="payment-button-amount">Agregar pregunta</span>
+                  </button>
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <button
+            type="submit"
+            class="btn btn-primary btn-sm"
+            ng-click="vm.guardarEvaluacion()"
+          >
+            <i class="fa fa-dot-circle-o"></i> Guardar
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

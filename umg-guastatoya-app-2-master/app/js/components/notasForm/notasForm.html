@@ -1,0 +1,60 @@
+<style-links></style-links>
+<sidebar content="'notas'"></sidebar>
+<div id="right-panel" class="right-panel">
+  <header-component></header-component>
+  <div class="content pb-0">
+    <div class="row">
+      <div class="card w-100">
+        <div class="card-header">
+          <strong class="card-title">Usuarios</strong>
+        </div>
+        <div class="card-body">
+          <table editable-table class="table">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Curso</th>
+                <th scope="col">Horario</th>
+                <th scope="col">Nota Final</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="curso in vm.cursos track by $index">
+                <th scope="row">{{curso.id}}</th>
+                <td>{{curso.nombre_curso}}</td>
+                <td>{{curso.horario}}</td>
+                <td><input
+                    id="nota"
+                    name="nota"
+                    type="text"
+                    class="form-control"
+                    required
+                    ng-model="nota"
+                  />
+                  <div class="card-footer">
+                    <button
+                      type="submit"
+                      class="btn btn-primary btn-sm"
+                      ng-click="vm.guardarNota(curso.id, nota)"
+                    >
+                      <i class="fa fa-dot-circle-o"></i> Guardar Nota
+                    </button>
+                </div> 
+                </td>                
+              </tr>
+            </tbody>
+          </table>
+          <div class="card-footer">
+            <button
+              type="submit"
+              class="btn btn-primary btn-sm"
+              ng-click="vm.getNotasAlumno()"
+            >
+              <i class="fa fa-dot-circle-o"></i> Guardar Nota
+            </button>
+        </div> 
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

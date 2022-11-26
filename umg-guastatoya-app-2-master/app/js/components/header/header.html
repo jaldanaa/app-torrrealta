@@ -54,6 +54,8 @@
   <div class="top-right">
     <div class="header-menu mt-1">
       <a class="nav-link" ui-sref="usuarios({})" ui-sref-active="active" ng-if="vm.authenticationService.getCurrentUserType() === 1"><i class="fa fa-user"></i> Administrar Usuarios</a>
+      <a class="nav-link" ui-sref="alumnos({})" ui-sref-active="active" ng-if="vm.authenticationService.getCurrentUserType() === 1"><i class="fa fa-pencil-square-o"></i> Gestiones</a>
+      <a class="nav-link" ui-sref="evaluaciones({})" ui-sref-active="active" ng-if="vm.authenticationService.getCurrentUserType() === 1"><i class="fa fa-pencil-square-o"></i> Evaluaciones</a>
       <a class="nav-link pointer-link" ng-click="vm.authenticationService.logout()"><i class="fa fa-power-off"></i> Cerrar Sesion</a>
     </div>
   </div>

@@ -1,0 +1,147 @@
+<style-links></style-links>
+<div ng-if="vm.authenticationService.currentUser && vm.authenticationService.currentUser.profile.tipo == 3">
+  <header-component></header-component>
+  <div class="center">
+    <section id="">
+        <h1 class="subheader text-dark"><strong class="card-title">Resolver </strong> Evaluacion</h1>
+
+        <div class="content pb-0">
+          <div class="row">
+            <div class="card w-100">
+              <div class="card-body">
+                <div id="pay-invoice">
+                  <div class="card-body">
+                    <div class="card-title">
+                      <h3 class="text-center" ng-if="vm.evaluacion">
+                        {{vm.evaluacion.titulo}} | {{vm.evaluacion.curso.nombre}}
+                      </h3>
+                    </div>
+                    <hr />
+                    <form>
+                      <div
+                        ng-repeat="p in vm.evaluacion.preguntas"
+                        ng-init="preguntaIndex = $index"
+                      >
+                        <hr />
+                        <div class="row form-group">
+                          <div class="col col-md-8">
+                            <label class="form-control-label"><strong>{{p.titulo}}</strong></label>
+                          </div>
+                          <div class="col col-md-4">
+                            <div class="form-check">
+                              <div
+                                class="radio"
+                                ng-repeat="r in vm.evaluacion.preguntas[preguntaIndex].respuestas"
+                                ng-init="respuestaIndex = $index"
+                              >
+                                <label
+                                  for="respuesta{{preguntaIndex}}{{respuestaIndex}}"
+                                  class="form-check-label"
+                                >
+                                  <input
+                                    type="radio"
+                                    id="respuesta{{preguntaIndex}}{{respuestaIndex}}"
+                                    name="respuesta{{preguntaIndex}}"
+                                    class="form-check-input"
+                                    value="{{r.id}}"
+                                    ng-model="vm.evaluacionResueltaModel.respuestas[preguntaIndex]"
+                                  />{{r.titulo}}
+                                </label>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <hr />
+                      </div>
+                    </form>
+                  </div>
+                </div>
+              </div>
+              <div class="card-footer">
+                <button
+                  type="submit"
+                  class="btn btn-primary btn-sm"
+                  ng-click="vm.resolverEvaluacion()"
+                >
+                  <i class="fa fa-dot-circle-o"></i> Guardar respuestas
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+    </section>
+  </div>
+</div>
+
+<!-- <sidebar content="'evaluaciones'"></sidebar>
+<div id="right-panel" class="right-panel">
+  <header-component></header-component>
+  <div class="content pb-0">
+    <div class="row">
+      <div class="card w-100">
+        <div class="card-header">
+          <strong class="card-title">Resolver </strong> Evaluacion
+        </div>
+        <div class="card-body">
+          <div id="pay-invoice">
+            <div class="card-body">
+              <div class="card-title">
+                <h3 class="text-center" ng-if="vm.evaluacion">
+                  {{vm.evaluacion.titulo}} | {{vm.evaluacion.curso.nombre}}
+                </h3>
+              </div>
+              <hr />
+              <form>
+                <div
+                  ng-repeat="p in vm.evaluacion.preguntas"
+                  ng-init="preguntaIndex = $index"
+                >
+                  <hr />
+                  <div class="row form-group">
+                    <div class="col col-md-8">
+                      <label class="form-control-label">{{p.titulo}}</label>
+                    </div>
+                    <div class="col col-md-4">
+                      <div class="form-check">
+                        <div
+                          class="radio"
+                          ng-repeat="r in vm.evaluacion.preguntas[preguntaIndex].respuestas"
+                          ng-init="respuestaIndex = $index"
+                        >
+                          <label
+                            for="respuesta{{preguntaIndex}}{{respuestaIndex}}"
+                            class="form-check-label"
+                          >
+                            <input
+                              type="radio"
+                              id="respuesta{{preguntaIndex}}{{respuestaIndex}}"
+                              name="respuesta{{preguntaIndex}}"
+                              class="form-check-input"
+                              value="{{r.id}}"
+                              ng-model="vm.evaluacionResueltaModel.respuestas[preguntaIndex]"
+                            />{{r.titulo}}
+                          </label>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <hr />
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer">
+          <button
+            type="submit"
+            class="btn btn-primary btn-sm"
+            ng-click="vm.resolverEvaluacion()"
+          >
+            <i class="fa fa-dot-circle-o"></i> Guardar respuestas
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> -->

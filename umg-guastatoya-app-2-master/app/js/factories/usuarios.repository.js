@@ -13,7 +13,9 @@
             crearUsuario: crearUsuario,
             eliminarUsuario: eliminarUsuario,
             getUsuario: getUsuario,
-            editarPerfil: editarPerfil
+            editarPerfil: editarPerfil,
+            crearEstudiante: crearEstudiante,
+            editarPerfilEstudiante: editarPerfilEstudiante
         };
 
         return repository;
@@ -66,6 +68,26 @@
                 url: apiUrl + 'users/',
                 data: data,
                 headers: authenticationService.getHeaders()
+            }).then(function (response) {
+                return response;
+            }).catch(error);
+        }
+
+        function editarPerfilEstudiante(id, data) {
+            return $http({
+                method: 'PATCH',
+                url: apiUrl + 'update-student-profile/' + id + '/',
+                data: data
+            }).then(function (response) {
+                return response;
+            }).catch(error);
+        }
+
+        function crearEstudiante(data) {
+            return $http({
+                method: 'POST',
+                url: apiUrl + 'create-student/',
+                data: data
             }).then(function (response) {
                 return response;
             }).catch(error);

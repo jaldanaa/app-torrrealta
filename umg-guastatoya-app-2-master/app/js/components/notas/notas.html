@@ -1,0 +1,97 @@
+<style-links></style-links>
+<sidebar content="'notas'"></sidebar>
+<div id="right-panel" class="right-panel">
+  <header-component></header-component>
+  <div class="content pb-0">
+    <div class="row">
+      <div class="card w-100">
+        <div class="card-header" ng-if="!vm.notas">
+          <strong class="card-title">Asignar </strong> Grado
+        </div>
+        <div class="card-body">
+          <div id="pay-invoice">
+            <div class="card-body">
+              <div class="card-title">
+                <h3 class="text-center" ng-if="!vm.notas">Ingrese los datos</h3>
+              </div>
+              <hr />
+              <form name="vm.notas" novalidate>                
+                <div class="form-group">
+                  <label for="cc-payment" class="control-label mb-1"
+                    > Grado</label
+                  >
+                  <select
+                    id="curso"
+                    name="curso"
+                    type="text"
+                    class="form-control"
+                    required
+                    ng-model="idGrado"
+                  >
+                    <option
+                      value="{{c.id}}"
+                      ng-repeat="c in vm.grados track by $index"
+                      ng-selected="{{}}"                                        
+                      >{{c.grado}}</option
+                    >
+                  </select>
+                  <small class="form-text text-danger" ng-if="vm.evaluacionForm.curso.$invalid && vm.evaluacionForm.$submitted">*Ingrese el curso</small>
+                </div>  
+                <div class="form-group">
+                    <label for="cc-payment" class="control-label mb-1"
+                      >Año</label
+                    >
+                    <input
+                      id="ciclo"
+                      name="ciclo"
+                      type="text"
+                      class="form-control"
+                      required
+                      ng-model="ciclo"
+                    />
+                    <small class="form-text text-danger" >*Ingrese el ciclo</small>
+                  </div> 
+                <div class="card-footer">
+                    <button
+                      type="submit"
+                      class="btn btn-primary btn-sm"
+                      ng-click="vm.getAlumnosGrado(idGrado, ciclo)"
+                    >
+                      <i class="fa fa-dot-circle-o"></i> Buscar Alumnos
+                    </button>
+                </div> 
+                <div class="card-body">
+                    <table class="table">
+                      <thead class="thead-dark">
+                        <tr>
+                          <th scope="col">Nombres</th>
+                          <th scope="col">Apellidos</th>
+                          <th scope="col">Acciones</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr ng-repeat="alumno in vm.alumnos track by $index">
+                          <th>{{alumno.nombres}}</th>
+                          <td>{{alumno.apellidos}}</td>
+                          <td>
+                            <button
+                              type="button"
+                              class="btn btn-lg btn-warning btn-sm"
+                              ng-click="vm.getCursos(idGrado, alumno.id,ciclo)"
+                            >
+                              <i class="fa fa-pencil fa-lg"></i>&nbsp;
+                              <span>Ver cursos</span>
+                            </button>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
